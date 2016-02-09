@@ -1,0 +1,26 @@
+What is applicative order? Give a working example to illustrate this in a language of your choice.
+Discuss here, but put the code in a separate file with proper extension. Ensure the code works.
+
+Applicative order is an evaluation strategy in which evaluates function arguments before passing them to a function. 
+
+For example of applicative order in Scala. 
+
+object Main {
+  def byValue(a: Unit) = {
+    for (i <- 0 until 10) {println(a)}
+
+  }
+  
+  def main(args: Array[String]) {
+    var i = 1;
+ 
+    byValue(i = i + 1)
+    println(i);
+ 
+  }
+}
+
+The final value of i after the function byValue() is called is 2. It is because the applicative order will evaluate i = i + 1 before pass it to funtion byValue().
+
+https://mitpress.mit.edu/sicp/full-text/sicp/book/node85.html
+https://omgo.wordpress.com/2010/06/07/scala-call-by-name-vs-call-by-type/

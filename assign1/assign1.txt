@@ -1,0 +1,75 @@
+Assignment 1: Due 11:59PM September 18th
+
+For this assignment we'll use two different languages. One has to be a statically typed language and the other has to be a dynamically typed language.
+
+Create files using proper extensions. Also create either a build file or a sh file that will compile (if necessary) and run your code to display the output or show test results automatically.
+
+If you need help with any of the steps, please ask. You do not have to fight with tools or code for a long time. The purpose of this course is to learn. If you're stuck, then ask for help and it will be given. Of course if you start early, you will be able to make much better progress than if you start late.
+
+In each of the languages, create two implementations for a function that will tell whether a number, given as argument, is a perfect number or not.
+
+A perfect number is a number greater than 1 whose factors total to twice the number. For example, the factors of 6 are 1, 2, 3, and 6. The total of these values is 12 which is twice the given number 6.
+
+The first implementation, in each language, should be in imperative style. The second implementation, in each language, should be in functional style.
+
+Suggestion: Start with one language. Write the code in that languages, evolve it using reviews. Once you've completed code in one language (and gotten a satisfactory review), then create in another language.
+
+After completing the coding (and only after that), answer the following questions:
+
+1. Discuss some of the things you have learned from working on this assignment.
+
+We have learned that functional programming is more concise and easy to understand than imperative programming. The imperative style requires more lines of code than the functional style.
+
+For example, the PerfectNumberImperative class (in both java and php) has about 45 lines of codes while the PerfectNumberFunctional class only has 5 lines of code.
+
+We also learned the different between between the static and dynamic typing. For example, functions are not constrained to returning a single type in dynamic languages. By using dynamic languages, programmer can write a code little quicker because he does not have to specify type everytime. However, it is more easier to get errors by using dynamic languages than using static languages. Static languages are much safer. 
+
+2. Were there any thing that surprised you or things that you did not expect.
+
+We have expected functional programming style would be more concise and easy to understand than imperative programming style. But the surprised is that the code is really really short by using funtional style. 
+
+3. Given this experience, draw a comparison between the imperative style and the functional style.
+
+One of similarities between imperative and functional style, based on our assignment, is that both can use function to do works. For example, in PerfectNumberImperative.java, the function isPerfectNumber takes in an integer as a parameter and then returns a Boolean value to indicate whether the number passed in is a perfect number. Similarly, in PerfectNumberFunctional.java, the function isPerfectNumber has the same function signature.
+
+Another similarity between the two styles is that they both use statements. For example, in PerfectNumberImperative.java, an if statement is used to compare whether the number is less than 6. Likewise, an if statement is used in PerfectNumberFunctional.java to do the same comparison.
+
+One more similarity between the two styles is that they both use expressions. For example, in PerfectNumberImperative.php, the function isPerfectNumber returns a Boolean value which is in turn returned from this expression array_sum($factors) == $number * 2. In the same manner, in PerfectNumberFunctional.php, the function isPerfectNumber returns the result of the expression array_sum($factorNumbersList) == $number * 2.
+
+One significant difference between the two styles is that functional style allows function cascading. For example, in PerfectNumberFunctional.java, the function isPerfectNumber uses a function cascading as below:
+
+IntStream.rangeClosed(1, number)                
+         .filter(item -> number % item == 0)
+         .sum();
+
+In the above code, the IntSteam object’s rangeClosed function returns another IntStream object. Then the new object’s filter function is called, then returns another IntStream object. Then this new object’s sum function is called to return the sum of its elememnts.
+
+On the other hand, the imperative style does not use function cascading. For example, in the PerfectNumberImperative, the procedure to compute if a number is a perfect number as below:
+
+boolean isPerfectNumber(int number)
+    {
+        if(number < 6)
+        {
+            return false;
+        } 
+        
+        Set<Integer> allFactors = getAllFactors(number);
+        
+        return sumOfCollection(allFactors) == number * 2;
+    }
+
+The collection of all factors of a number is calculated and stored in the allFactors variable. Then this variable is passed to the function sumOfCollection to calculate the sum of all elements. 
+
+
+4. Given this experience, draw a comparison between static typing and dynamic typing.
+
+A significant difference between static typing and dynamic typing language is that static typing requires us to specify data types as we declare variables. For example, in PerfectNumberImperative.java, in the function isPerfectNumber(int number), we have to specify int number in order to tell the compiler that number is a variable of type integer. In contrast, in php, we do not have to do that. The function isPerfectNumber($number) just need to define $number as is parameter. At run-time, when we actually pass in an integer value to the function, then data type of the variable $number will be then decided.
+
+Total[100]: 100
+Build and tests [10]:
+Imperative Language 1 [20]:
+Functional Language 1 [20]:
+Imperative Language 2 [20]:
+Functional Language 2 [20]:
+Answers for questions in assign1.txt [10]:
+

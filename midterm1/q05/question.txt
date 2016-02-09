@@ -1,0 +1,25 @@
+What is REPL? How is it useful?
+
+
+
+
+Give an example REPL session in a language of your choice (copy and paste below your REPL session from the command line).
+
+
+Answer:
+Give an example REPL session in a language of your choice (simply copy and paste below your REPL session from the command line).
+
+REPL stands for read-evaluate-print loop. REPL is a programming environment, in which the users input the commands, then the commands will be read and executed right way, then finally a result will be returned within the environment interface. The above loop will continue until the users terminate the REPL shell.
+
+REPL is helpful when it comes to exploring a language as well as debugging. Since REPL enables the users to type in commands and receive feedbacks quickly, the users can use REPL to try out commands or syntax of a particular language quickly without too much set-up. With the results quickly delivered, the users can quickly evaluate why some commands behave this way, but not that way. From there, the users can learn why the bugs in their programs occur.
+Eshell V7.1  (abort with ^G)
+1> Number1 = 1.
+1
+2> Number2 = 2.
+2
+3> Sum = Number1 + Number2.
+3
+4>
+
+https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+

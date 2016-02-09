@@ -1,0 +1,87 @@
+[Venkat 11/12/15 04:07 AM CET]
+review: good so far
+
+Scala - done
+Ruby - a few refactoring suggestions
+
+------------------------------------------------------------------------------
+[Venkat 11/11/15 04:44 AM CET]
+review: good move forward
+
+Scala: one more refactoring.
+
+Ruby: good start
+
+------------------------------------------------------------------------------
+[Venkat 11/10/15 04:50 AM CET]
+review: nice work
+
+Refactor to reduce code. Then move on to the next language.
+
+------------------------------------------------------------------------------
+[Venkat 11/09/15 06:14 AM EET]
+review: nice work so far
+
+Good so far.
+
+Write the following tests:
+1. length 4
+2. a price list where prices are missing for some lengths.
+3. a price list where the solution does not include the length itself.
+
+------------------------------------------------------------------------------
+[Venkat 11/08/15 09:10 AM EET]
+review: nice progress
+
+One more refactoring, then write test for length 3.
+
+------------------------------------------------------------------------------
+[Venkat 11/07/15 22:04 PM EET]
+review: avoid var, use val
+
+Refactor further to reduce code. Avoid var, use val.
+
+------------------------------------------------------------------------------
+[Venkat 11/05/15 04:40 AM CET]
+review: good progress
+
+See <https://groups.google.com/d/msg/uhcsf15pl/6GijN6Xp7bc/OU2EFKF_EQAJ>.
+Let's refactor the code just a bit.
+
+------------------------------------------------------------------------------
+[Venkat 11/04/15 04:55 AM CET]
+review: reduce noise
+
+We can remove a few things. Write minimum code to make the tests pass.
+
+Then move forward to the next test and write minimum code.
+
+------------------------------------------------------------------------------
+[Venkat 11/03/15 04:20 AM CET]
+review: rework the tests to convey the intent
+
+Rework the tests so we know the intent clearly.
+Avoid mutability and state.
+
+------------------------------------------------------------------------------
+[Venkat 11/01/15 15:58 PM CET]
+review: rethink the interface
+
+Rethink the interface of the function, what it should actually return.
+Also, in the code avoid mutability.
+
+------------------------------------------------------------------------------
+[Venkat 10/31/15 18:20 PM MDT]
+review: better to minimize state
+
+Avoid creating state as much as possible. See suggestions in code.
+
+------------------------------------------------------------------------------
+[Venkat 10/31/15 07:38 AM MDT]
+review: very nice start
+
+Very nice small steps, good first few tests. The tests already give us some insight into
+what we would have to change. Nice so far.
+
+------------------------------------------------------------------------------
+scala

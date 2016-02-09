@@ -1,0 +1,5 @@
+(create Pizza with
+  spread sauce
+  spread cheese
+  toppings (sausage, mushroom)
+  bake)

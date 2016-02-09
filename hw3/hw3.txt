@@ -1,0 +1,220 @@
+Homework 3: Due 11:59PM November 20
+
+Pick JavaScript as one example and some other language you actually used in this course in one of the assignments.
+
+Mention the name of that language and discuss the similarities and differences of that language and JavaScript. Give
+examples.
+
+
+Javascript vs Scala
+
+Similarities
+1) Pass function to another function as argument, either by function name or anonymous function. 
+Scala:
+val numbers = List(1, 2, 3, 4, 5)
+numbers.filter(e => e % 2 == 0).foreach(e => println(e))
+
+Javascript:
+function filter(collection, selector) {
+    var returnedCollection = [];
+    
+    for(index in collection) {
+        if(selector(collection[index])) returnedCollection.push(collection[index]);
+    }
+    
+    return returnedCollection;
+}
+
+var evenNumbers = filter(numbers, function(item) {
+    return item % 2 == 0;
+});
+
+var numbers = [1, 2, 3, 4, 5];
+for(index in evenNumbers) {
+    console.log(evenNumbers[index]);
+}
+
+As we can see that an anonymous function is passed to the filter function to filter out even numbers in the numbers list. Moreover, another function can passed in to filter out odd numbers. In general, any Boolean-returning function can be passed in to filter out number in the numbers list.  
+
+2) Currying
+Currying allows the programmers to decompose a multi-parameter function into a function that has multiple parameter lists. For example: add(a, b) can be decompose to add(a)(b). Basically, add(a) returns a function that take one parameter (b). 
+In javascript:
+var add = function(a) {
+    return function(b) {
+        return a + b;
+    };
+};
+  
+
+
+def add(number : Int) = {
+    (aNumber : Int) => number + aNumber;
+}
+
+add(2)(3) will return 5 in both languages.
+
+
+3) Dynamically add new methods to a single object
+In Scala, trait can be used to dynamically add a new method to a single object. It means only that object has that trait, not all objects of the same type. For example: in this case only the instance aBird of Bird type can call speak()
+
+class Bird {}
+trait Speakable {
+    def speak = { println("Spkeaing...") }
+}
+val aBird = new Bird with Speakable
+aBird.speak
+
+In javascript, the same thing can be done as below:
+function Bird() {}
+aBird = new Bird();
+aBird.speak = function() {
+    console.log("Speaking...")
+};
+aBird.speak();
+
+4) Dynamically add new methods to a class
+For example, in scala, this can be achieved as below:
+class Bird {}
+class SpeakableBird(bird : Bird) {
+    def speak = { println("Spkeaing...") }   
+}
+implicit def makeBirdSpeakable(bird : Bird) = new SpeakableBird(bird)
+val aBird = new Bird
+aBird.speak
+val someBird = new Bird
+someBird.speak
+
+In javascript, the same thing can be done as below:
+function Bird() {}
+
+Bird.prototype.speak = function() {
+    console.log("Speaking...")
+};
+
+aBird = new Bird();
+aBird.speak();
+anotherBird = new Bird();
+anotherBird.speak();
+
+
+5)Static method
+Both languages do not support static method. However, there are ways to work around this.
+
+For example, in javascript, “static” method can be done as below:
+function Bird() {
+}
+
+Bird.speak = function() {
+    console.log("spkeaking...")
+}
+
+Bird.speak();
+
+In Scala, “static” method can be done via companion object:
+class Bird {
+}
+
+object Bird {
+    def speak() = println("speaking...")
+}
+
+Bird.speak()
+
+Differences:
+1) Javascript is dynamically typed whereas Scala is statically typed. 
+For example: in javascript,  we can write num = 10, use num without any problem. However, in scala, a type is needed, so we need to write var num : Int = 10
+
+2) Javascript does not support operations on immutable data structures whereas Scala does. 
+For example, in javascript, the code below will loop through an array, double each of its elements, and then save them in another array
+
+var numbers = [1, 2, 3, 4, 5];
+var doubleNumbers = [];
+for(i = 0; i < numbers.length; i++) {
+	doubleNumbers[i] = numbers[i] * 2;
+}
+
+In Scala, this can be done quite easily:
+val numbers = List(1, 2, 3, 4, 5);
+val doubleNumbers = numbers.map{e => e  * 2 };
+
+3) Partially applied function
+Both languages support partially applied function feature. However, javascript does not fully support partially applied function like Scala. In Scala, any parameter at any position can be set a default value. On the other hand, in javascript, parameters can only be set with default values from left to right.
+
+For example:
+Scala:
+val square = math.pow(_ : Int, 2)
+println(square(3)) 
+This will show 9
+
+Javascript:
+var square = Math.pow.bind(null, 2);
+console.log(square(3));
+This will show 8
+
+4) Object-Oriented Programming
+
+Scala is an Object-Oriented Programming language, and though JavaScript is a prototype-Oriented language. In JavaScript, any object inherit from the Object.prototype, including functions.
+
+5)Polymorphism
+Javascript supports polymorphism better than Scala because a method can be called on object as long as that object respond to the call at runtime; and the correct method will be invoked depending on the actual type of that object at runtime. For example:
+function Circle() {
+    this.draw = function() {
+        console.log("drawing cirle");
+    }
+}
+
+function Rectangle() {
+    this.draw = function() {
+        console.log("drawing rectangle");
+    }
+}
+
+function Square() {
+    this.draw = function() {
+        console.log("drawing square");
+    }
+}
+
+var shapes = [new Circle(), new Rectangle(), new Square()];
+for(i in shapes) {
+    shapes[i].draw();
+}
+
+In scala, it will not work. The below code will show error because the compiler does not know the actual type of each shape object in the shapes list. 
+class Circle {
+    def draw = println("drawing cirle")
+}
+
+class Rectangle {
+    def draw = println("drawing rectangle")
+}
+
+class Square {
+    def draw = println("drawing square")
+}
+
+val shapes = List(new Circle, new Rectangle, new Square)
+
+shapes.foreach(shape => shape.draw)
+
+The programmer can use trait to make it work:
+trait Shape {
+    def draw() : Unit
+}
+
+class Circle extends Shape {
+    override def draw = println("drawing cirle")
+}
+
+class Rectangle extends Shape {
+    def draw = println("drawing rectangle")
+}
+
+class Square extends Shape {
+    def draw = println("drawing square")
+}
+
+val shapes = List(new Circle, new Rectangle, new Square)
+
+shapes.foreach(shape => shape.draw)
+

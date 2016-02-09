@@ -1,0 +1,19 @@
+﻿Statement: "A statically typed language is one in which the programmer has to specify 
+the full type details for every variable at compile time."
+
+What's your view of that statement—discuss, and provide examples to support your discussion.
+Keep your answer in this file.
+
+Anwser:
+
+It is true that statically-typed languages require programmers to specify data types for variables at compile time. For example, in java, we must declare a variable of integer type as below:
+int number;
+
+If the data type is not specified in the above code, the compiler will complain. 
+
+Compile-time data type checking is good in term of catching bugs because it checks for incorrect use of type earlier. For example, in java, the below will not be allowed:
+String s = 5
+
+It is because s is declared as a string, but it is assigned an integer value. If this was not caught earlier, later on, if a function only appropriate for string is called (example: s.split(","), a runtime error will occur. 
+
+

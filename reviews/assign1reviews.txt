@@ -1,0 +1,139 @@
+[Venkat 09/17/15 04:52 AM EDT]
+review: revisit 3 and 4
+
+1.
+"easy understand" -> "easy to understand"
+
+good
+
+2.
+"easy understand" -> "easy to understand"
+
+good
+
+3. and 4. Do not make general observations here. Instead related this to
+your program, your own experience, then then draw conclusions from it.
+
+------------------------------------------------------------------------------
+[Venkat 09/15/15 05:29 AM EDT]
+review: Tie this to your experience and observations
+
+1.
+"arrogant"? explain what that means in this context.
+
+2. 
+Again that word, I have no clue what that means in this context, explain.
+
+Also, don't repeat things between sections.
+
+3.
+Avoid repeats.
+
+Tie the discussion to your observations and your experience with this program.
+
+4. 
+Discuss your experience, not general theory.
+
+------------------------------------------------------------------------------
+[Venkat 09/14/15 07:20 AM EDT]
+review: coding completed
+
+good so far
+
+------------------------------------------------------------------------------
+[Venkat 09/13/15 17:44 PM EDT]
+review: refactor
+
+PHP:
+PerfectNumberFunctional:
+Change indentation and grouping to make this more easier to read.
+Make sure a quick look at the code shows different parts and how
+they are connected logically.
+
+------------------------------------------------------------------------------
+[Venkat 09/12/15 06:41 AM CEST]
+review: nice progress
+
+java: done
+
+php:
+good so far.
+
+------------------------------------------------------------------------------
+[Venkat 09/11/15 05:58 AM CEST]
+review: modularize
+
+Java:
+PerfectNumberImperative:
+isPerfectNumber:
+Modularize the code, break into smaller methods where each is focused on
+one thing.
+
+PerfectNumberFunctional:
+Good.
+
+Php:
+use assertTrue where possible instead of assertEquals.
+
+PerfectNumberImperative:
+Modularize, break into smaller methods which are cohesive, do one small thing.
+
+------------------------------------------------------------------------------
+[Venkat 09/10/15 16:27 PM CEST]
+review: refactor
+
+Java:
+for(Integer e : collection)
+to
+for(int e : collection)
+
+PerfectNumberImperativeTest:
+test for negative number, 0, and 1.
+
+PerfectNumberFunctional:
+Line up the dots vertically.
+Change range to rangeClosed and then == number to == number * 2;
+
+Let's get the Java code done before looking at another language, looks like
+we have some more work here compared to previous review.
+
+------------------------------------------------------------------------------
+[Venkat 09/09/15 04:37 AM PDT]
+review: nice work so far. Move forward
+
+PerfectNumberImperative:
+for(Integer e : collection)
+to
+for(int e : collection)
+
+PerfectNumberFunctional:
+line up the dots vertically, a dot should be right below the dot that precedes it.
+
+range: change to rangeClosed and then == number to == number * 2 to make this
+consistent with the problem and the other implementation.
+
+------------------------------------------------------------------------------
+[Venkat 09/07/15 07:50 AM MDT]
+review: good so far, move forward
+
+PerfectNumberImperative:
+
+Change 
+
+Set<X> var = new HashSet<X>();
+to
+Set<X> var = new HashSet<>();
+
+isPerfectNumber:
+Remove the call to remove and do == number * 2;
+
+------------------------------------------------------------------------------
+[Venkat 09/06/15 08:58 AM CEST]
+review: nice so far
+
+Yay, nice to see tests.
+
+Nice start. Nice tests. Nice code.
+
+------------------------------------------------------------------------------
+java - done

@@ -1,0 +1,51 @@
+What is metaprogramming? Give examples in a language of your choice and explain their benefits.
+
+Metaprogramming is writing programs that take in programming codes as its input. The input codes will then executed dynamically to produce the results. 
+One benefit of metaprogramming is that it provides flexibility of solving problems. Instead of writing multiple programs to handle multiple cases of a problem, metaprogramming can be used. The problem can described using the actual syntax of the language itself, but in simpler form. Then at runtime, the codes, describing the problem, will be executed dynamically to solve a specific case of the problem at run-time. 
+
+For example, a programmer wants to write a program in Groovy that simulates creating a pizza. The process of creating a pizza may require these actions: spread, toppings. The items can be used in spreading and toppings are very diverse, including cheese, sausage, onions etc. If the program wants to write codes to handle all items, he might need to hard-coded a lot of items. Also, in the future, if there are new items, he will have to change the codes. So, in this case, the program can create an internal DSL which is actually a subset of the parent language that the programmer uses. The syntax of the DSL is as below:
+create Pizza {
+	spread cheese
+	toppings onions, sausage
+	spread sauce
+}
+
+The actual program that handles the DSL is as below:
+def static create(name) {
+    return name
+}
+
+def static Pizza (Closure closure) {
+    Pizza pizza = new Pizza()
+    pizza.with(closure)
+    return pizza
+}
+
+class Pizza {
+    def layer = []
+
+    def propertyMissing(String name) { name }
+
+    def toppings(String[] name) {
+        layer << name
+    }
+
+    def spread(String name) {
+        layer << name
+    }
+
+    def String toString() {
+        return layer.toString()
+    }
+
+}
+
+As we can see, the function Pizza can take in a closure and evaluate it within the context of a Pizza object. This allows the DSL codes to be evaluated dynamically and flexibly. 
+
+Another benefit of metaprogramming is that it allows extending an existing class without changing the source code of the class. It helps to make extension while still minimizing bugs and errors. Example, the code below dynamically add function doubled() to a List:
+ArrayList.metaClass.doubled = {
+    delegate.collect { e -> e * 2 }
+}
+
+def numbers = [1, 2, 3]
+numbers.doubled().each {e -> println e}

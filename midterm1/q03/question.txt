@@ -1,0 +1,32 @@
+What is normal order? Give a working example to illustrate this in a language of your choice.
+Discuss here, but put the code in a separate file with proper extension. Ensure the code works.
+
+Answer:
+
+Normal order is an evaluation strategy in which the parameters to a function are not evaluated until their actual values are required. If the parameters are required more than once, they will be evaluated as many times as needed. 
+
+
+The code below demonstrates normal order in Scala. 
+
+object Main {
+  def byName(a: => Unit) = {
+    for (i <- 0 until 10) {println(a)}
+
+  }
+  
+  def main(args: Array[String]) {
+    var i = 1;
+ 
+    byName(i = i + 1)
+    println(i);
+ 
+  }
+}
+
+The final value of i after the function byName() is called is 11.
+It is because the expression i = i + 1 is evaluated after the function byName is invoked. Therefore, i still has value 1 as the loop begins. Then within that function, the expression is referenced 10 times. That is why the expression is evaluated 10 times. So 1 + 10 makes 11. 
+
+
+https://mitpress.mit.edu/sicp/full-text/sicp/book/node85.html
+https://omgo.wordpress.com/2010/06/07/scala-call-by-name-vs-call-by-type/
+

@@ -1,0 +1,196 @@
+ Homework 4: Due 11:59PM December 04
+
+**There will no reviews for this Homework**
+
+Feel free to give answers collectively, and also if you want to, you can call 
+out something specific to yourself different from your pair.
+
+(a) What languages did you use in this course? 
+
+Scala, Erlang, Groovy, Ruby, PHP, Java
+
+(b) Which one of those you used for the first time?
+
+Khanh: Scala, Erlang, Groovy, Ruby
+Trung: Scala, Erlang, Groovy, Ruby, PHP
+
+(c) What are your impressions about all the languages that you used (compare
+and contrast in your view)?
+
+1) Dynamically typed languages make writing code pretty faster than statically typed ones because programmers do not have to worry too much about data type declaration.
+
+In the Assignment 1, we used Java and PHP. When we coded class PerferNumberImperative in Java (a statically typed language), we had to clearly indicate types of variables, for example, in the function below
+
+Set<Integer> getAllFactors(int number)
+    {
+        Set<Integer> factors = new HashSet<>();
+        
+        for(int i = 1; i <= number / 2; i++)
+        {
+            if(isFactor(number, i))
+            {
+                factors.add(i);
+                factors.add(number / i);
+            }
+        }
+        
+        return factors;
+    }
+
+We had to declare the parameter number as int, the factors as a Set<Integer>.
+
+On the other hand, with PHP, we coded more smoothly as below:
+
+function getAllFactors($number)
+    {
+        $factors = array();
+        
+        for($i = 1; $i <= $number; $i++)
+        {
+            if($this->isFactor($number, $i))
+            {
+                array_push($factors, $i);
+            }
+        }
+        
+        return $factors;
+    }
+
+As we can see, the parameter $number, the array $factor do not have type declaration.
+
+
+Another example is in the Assignment 4 where we used Scala and Ruby. When we coded the function getBestSolution() in scala, we had to write pretty much of code to indicate data type:
+
+def getBestSolution(size : Int, prices : Map[Int, Int]): (Int, List[List[Int]]) = size match{
+    case 0 => (0, List(List()))
+
+    case _ => {
+      val initialSolution = (pickPrice(size, prices), List(List(size)))
+
+      (1 to size - 1).foldLeft(initialSolution){
+        (result, e) => findBestSolution(result, getBestSolutionsForSplit( e , size, prices))
+      }
+    }
+  }
+
+As we can see that, the function signature has size as Int, prices as Map[Int, Int], and the return type is a tuple of Int and List of List of Int. It looks quite verbose.
+
+On the other hand, in Ruby (a dynamically typed language), we did not have to write to much code for data type declaration:
+
+def getBestSolutions(size, prices)
+    if(size == 0)
+      return 0, [[]]
+    end
+
+    initialSolution = [getPrice(size, prices), [[size]]]
+    (1..size - 1).to_a.inject(initialSolution) do |result, split|
+      findBestSolution(result, getBestSolutionForSplit(split, size, prices))
+    end
+  end
+
+As we can see, the function signature is much simpler with just size and prices. The language will know what data type to apply at run-time for us.
+
+2)Design an internal DSL in Scala and Groovy: groovy appears to be a better choice in comparison with Scala 
+
+For example, in the Assignment 3 where we designed a DSL for making pizza, we used Groovy and Scala.
+
+In Groovy, we could design the syntax of the DSL with fluency as below:
+
+create Pizza {
+            spread cheese
+            toppings onions, sausage
+            spread sauce
+        }
+
+Two important features in Groovy allows us to design this way.
+The first feature is that Groovy allows a function to receive a closure and evaluate that closure within the context of a specific object:
+
+def static Pizza (Closure closure) {
+    Pizza pizza = new Pizza()
+    pizza.with(closure)
+    return pizza
+}
+
+Pizza is a function which takes a closure. The closure then will be evaluated within the context of an Pizza object as below:
+
+class Pizza {
+    def layer = []
+
+    def propertyMissing(String name) { name }
+
+    def toppings(String[] name) {
+        layer << name
+    }
+
+    def spread(String name) {
+        layer << name
+    }
+
+    def String toString() {
+        return layer.toString()
+    }
+
+}
+
+The second feature is that Groovy allows missing methods and properties to be caught and handled within the object on which the methods and properties are used. As we can see that, as the method spread, toppings, and the properties cheese, onions, sausage are used on a Pizza object, their string values can be retrieved and saved in the array layer. Without this feature, it is almost impossible to design the DSL this way.
+
+In Scala, the syntax is quite more complicated as below:
+(create Pizza as
+      spread cheese
+      toppings (sausage, mushroom)
+      spread sauce
+      bake)
+
+The syntax is somehow less fluent than Groovy’s syntax. In addition, Scala does not have the feature which allows us to evaluate a closure within the context of an object. So we have to use two features in Scala to design the DSL: invoking a method with a parameter on an object without dot and parentheses, and method chaining. These features allow us to do the following chain:
+
+create is an object of PizzaMaker which has a method Pizza which takes   in a string parameter. This call returns a Pizza object on which we can call spread, toppings which take in string values. These methods in turn return the current Pizza object which we can call the overridden method toString to get the layers as an array of strings.
+
+
+3)Functional programming is helpful in reducing lines of code that programmers have to write.
+
+In the Assignment 1, we coded PerfectNumber classes in imperative and functional styles in Java and PHP. As we observed, the imperative style is clearly more verbose than functional style. In functional style, the codes are more concise, easier to understand. For example, in java:
+
+int sum = IntStream.rangeClosed(1, number)                
+                           .filter(item -> number % item == 0)
+                           .sum();
+
+The function rangeClosed() create a stream of intergers from 1 to number. Then the function filter is called with a closure to filter out only the numbers divisible by the integer number. Then finally, the stream of integers returned from the previous call is summed up.
+
+In contrast, in imperative style, we have to write a lot of codes. We have to write a function getAllFactors(int number) which takes in an integer, then loop through all numbers fron 1 until number/2, then collects all factors of the parameter number. Next, we have to write a function to loop through all numbers in an array to compute their sum. Finally, we have to write a function to combine the functions above to compute if a number is a perfect number.
+
+4)Pattern matching in Erlang and Scala
+In the Assignment 2, we have learned interesting pattern matching feature in Scala and Erlang.
+In Erlang,
+fibonacciSeriesRecursive(0) -> [1];
+fibonacciSeriesRecursive(1) -> [1, 1];
+fibonacciSeriesRecursive(N) when N > 1 -> Previous = fibonacciSeriesRecursive(N - 1),
+                                          Previous ++ [lists:sum(lists:nthtail(length(Previous) - 2, Previous))].
+
+In Scala,
+  def getSeriesRecursive(number: Int): List[Int] = number match {
+    case 0 => List(1)
+    case 1 => List(1, 1)
+    case _ => {
+        val result = getSeriesRecursive(number - 1)
+        result :+ result.takeRight(2).sum
+    }    
+  }
+
+As we can that the codes above are easy to understand and readable. Without patterning matching feature, we have write many if-else statements which are quite cumbersome and ceremony. 
+However, the pattern matching in Erlang is more interesting than it in Scala. As we can see in Erlang, multiple functions of the same name take in the same number of parameters. Based on the value of the parameter, an appropriate function is invoked. On the other hand, in Scala, there is only one function which will match the parameter number passed to the function to decide which block of code will be invoked.
+
+
+(d) What did you learn mostly in this course (I'm interested in hearing
+your views, things you realized, things you found interesting, things
+you did not like so much about any particular language, etc.)?
+
+In this course, we learned many different language that we have not used before such as Scala, Erlang, Groovy, Ruby, PHP. We also learned the advantage and disadvantage of each language; and the diferrents of strong type, weak type, static type, and dynamic type...
+However, the mostly interested thing that I learned from this course is how to write program in functional style. Functional stype help reducing lines of code and make it easier to undertand.
+In my opinion, the hardest thing in this course is learn how to write program total immutable.
+In many different languages that I learned in this course, I don't like Javascript. First, Javascript is designed to support web browser, and it have poor design. Moreover, Javascript does not support hash and dictionaries. 
+
+Also, immutablilty is a great feature, but personally I think in some special situations mutuability is needed in order to push up performance. For example, in the assignment 4, we were writinng a program to find optimal solutions of cutting rods. We had enforced total immutability. The problem was that recursive calls of getBestSolutionForSplit just re-computed the solutions for the smaller cuts even though those cuts were already computed. As we tested for the size > 10, the program took forever to complete. In this case, if we could save the results in a table for later look-up, it would be faster.
+
+Before taking this course, my favorite language was Java. But now, I changed my mind. Java is no longer my favorite one. The problem with Java is that it is too verbose, and ceremony. It makes programmers have to write many lines of codes. The next language that I do not like is Javascript. Even though Javascript has great features of dynamical programming and funtional style, but it lacks standard supports on immutable data structures. 
+
+For now, I am considering Scala, Groovy and Ruby are my favorite ones. They all support funtional programming style and immutable data structures.

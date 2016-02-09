@@ -1,0 +1,16 @@
+We discussed C#, Clojure, Erlang, F#, Groovy, Haskell, Java, Ruby, Scala, and JavaScript in this course. What are some of the ways in which you would classify these languages (there is more than one way). Explain each classification and group these languages appropriately in each classification.
+
+Dynamically typed vs statically types:
+F#, C#,  Java, Scala, Haskel are statically types languages. In these languages, data types are verified at compile-time. For example: int num = 10 in Java and C#;  val num : Int = 10 in Scala; let num:int32 = 10  in F#. However, in Scala, Haskel and F#, there is a mechanism of type inference. It means that in some situations, data types can be omitted. For example, in Scala, val num = 1 + 2, in this case the compiler will assume that the data type of num is Int. In F#,  let increment num = num + 1, in this case the compiler will assume num and the return type of the function increment have data types of int32.
+
+Clojure, Erlang, Groovy, Ruby, and Javasripts are dynamically typed languages. In these languages, data types are not verified at compile time. For example, in Clojure (def num 10); in Erlang {num} = {10}; in Groovy, Javascript and Ruby: num = 10. However, In Groovy, data type can be indicated for a variable as the variable is declared. For example, int num = 10.
+
+Static vs Dynamic:
+Groovy, Ruby, Javascript, Erlang and Clojure are dynamic languages. These languages provide great supports to manipulate behaviors of programs at run-time like dynamically adding functionalities to objects, evaluating codes within the context of a specific object etc. 
+
+On the other hand, F#, C#, Scala, Java, and Haskell are static languages. They do not have proper support for run-time program behavior manipulation like the dynamic ones do.
+
+Functional vs Non-functional:
+Ruby and Haskell are pure functional language. They support high order functions, declarative style, and does not allow side effect and immutability within pure functions. 
+
+On the other hand, C#, Java, F#, Groovy, Clojure, Erlang, Javascript and Scala can be considered hybrid functional language. These languages support high order functions, but also allow some or all of these things: mutability, side-effect, and declarative style.

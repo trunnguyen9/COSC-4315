@@ -1,0 +1,29 @@
+Is there any difference between typing in Java/C# vs. typing in C/C++?
+Discuss.
+
+Java/C# are Strong and Static typing.
+C/C++ are Weak and Static typing.
+
+- Java/C# are the strongly typed language that have on simple feature: knowledge of a value's type at runtime. 
+For example in Java:
+
+String name = "Name";
+Object obj = name;
+String anotherName = (String) obj;
+Date aDate = (Date) obj;
+
+There will no compile time error, but the line number 4 will cause run-time error exception Exception in thread "main" java.lang.ClassCastException: java.lang.String cannot be cast to java.util.Date. It is because Java enforces type verification at runtime. Even though on the surface, nameObject is of type Object, but its value is still String. So it is fine to convert to a String object, but not a Date object.
+
+
+- In  contrast, C/C++ are weakly typed language that variables can be implicitly coerced to unrelated types. 
+For example in C
+
+char* name = "Name";
+int number = name * 10;
+printf("%i\n", number);
+
+The above code will not cause either compile time or runtime error. But the result is unpredictable. At runtime the address value of name will be used to multiply by 10. C does not enforce that the variable name actually is pointer to a char array and should not be allowed to multiply with a number.
+
+References:
+
+http://sloblog.io/+dev/LbNSbfrU-_E/understanding-weak-vs-strong-typing

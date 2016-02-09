@@ -1,0 +1,22 @@
+What are persistent data structures. Give examples. What benefit do they provide over regular data structures? Under what context would you use them?
+
+Persistent Data Structures refer to data structures that preserve their previous states even though a change is applied to them. If an existing data need to be changed, the change will not be made on the existing data. Instead, the change will return a new data which has the change applied. 
+
+For example, there is string s = “hello”. To make it to become “hello everyone”, a copy of s can be created with “ everyone” append to it. s is left untouched.
+
+Another example, there is a list L(1, 2, 3). To add a new number to the front of L, a new pointer can be created and set to point to the new number. The new number in turn point to the number 1 of L.
+
+A benefit of persistent data structures over regular data structure is that it helps to enforce immutability of data. With data immutability, it will be easier to deal with concurrency programming. Concurrency programming is much more complicated if it has to deal with shared mutable data.
+
+For example, we have list L(1, 2, 3). Also, we have two independent threads which run concurrently, and t1 < t2 < t3 < t4 
+Thread 1: 
+adds 0 to L //time t1 
+show L 	//time t3
+
+Thread 2: 
+adds -1 to L. //time t2
+show L // time t4
+
+Assume that just right after Thread 1 adds 0 to L (t1), thread 2 reads L and then adds -1 to L (t2). Now L is (-1, 0, 1, 2, 3) which inconsistent in respect to thread 1.
+
+If L is immutable, there is not a problem. In thread 1, 0 points to 1, and new head is created. The new head itself points to 0. In thread 2, -1 points to 1, and a new head is created. The new head itself points to 1. Now two new lists have different heads which point two different initial values, but share the tail of (1, 2, 3). 

@@ -1,0 +1,88 @@
+[Venkat 10/29/15 06:43 AM MDT]
+review: rework the syntax
+
+Let's make it fluent, see dsl.txt
+
+------------------------------------------------------------------------------
+[Venkat 10/28/15 07:01 AM MDT]
+review: no build file found
+
+Did not find any build file to run tests and verify code.
+
+------------------------------------------------------------------------------
+[Venkat 10/27/15 06:34 AM MDT]
+review: pick a different langauge
+
+Groovy and Ruby have so much in common, pick a language other than Ruby -
+pick a statically typed language.
+
+------------------------------------------------------------------------------
+[Venkat 10/26/15 05:56 AM PDT]
+review: nice work
+
+A small change to remove noise.
+
+Move forward to the next language.
+
+------------------------------------------------------------------------------
+[Venkat 10/25/15 20:02 PM PDT]
+review: reduce code in test
+
+see notes in code.
+
+------------------------------------------------------------------------------
+[Venkat 10/26/15 01:18 AM CET]
+review: test should test, not implement
+
+Remove implementations from test file.
+
+------------------------------------------------------------------------------
+[Venkat 10/24/15 13:24 PM CEST]
+review: test is not matching the design
+
+The code in test is not the same as what dsl.txt says.
+
+------------------------------------------------------------------------------
+[Venkat 10/24/15 02:08 AM CEST]
+review: let's make it more fluent
+
+Get rid of the dot.
+
+------------------------------------------------------------------------------
+[Venkat 10/23/15 05:33 AM CEST]
+review: tweak and move forward
+
+See suggestions.
+
+------------------------------------------------------------------------------
+[Venkat 10/21/15 06:10 AM CEST]
+review: move forward
+
+In the dsl.txt I see a sample dsl. Is this dsl syntax supported by
+the language? Or do we have to change it a bit to make it compliant
+to the language syntax while keeping it fluent?
+
+Move forward.
+
+------------------------------------------------------------------------------
+[Venkat 10/19/15 04:55 AM CEST]
+review: take small steps
+
+The test is way too complex and has a lot of dependency. Big step == big failure.
+We have to take small steps.
+
+Put only test under test directory. Put code under main/groovy directory.
+Do not use File to load the groovy file. Instead of the file being a script,
+make that a class. In the test, create an instance of the class, call methods
+on the instance using the DSL format. That way we do not have to mess with
+File and file locations. Also we don't have to deal with strings, loading,
+and parsing, etc. That will remove the issues you're having with file locations.
+
+Also, in the test, I generally avoid when and then. Use expect: that's a lot simpler.
+
+I've created a dsl.txt file. Try to first define a sample structure and syntax
+for the dsl we want to process. Knowing where we're going can help us then
+design the code to get there.
+
+------------------------------------------------------------------------------
+Groovy
