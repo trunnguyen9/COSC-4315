@@ -1,8 +1,0 @@
-A recursion runs into stack overflow errors for very large values. On the other hand a tail call 
-optimized recursion does not. Why is that?
-
-Tail recursion is recursion which occurs at the last step within each recursive call and does not do additional computation after the recursive call is returned. After the final recursive call, it is not needed to go back to the chain of recursion to get the final result. The result at each call can be passed forward to the next recursive call. The final recursive call contains complete data to return. As a result, stack frames are not needed. A tail recursion can be treated as if it was iteration.
-
-On the other hands, regular recursion is not the last call within the recursive call. Returned values from the regular recursion will be used for additional computation within each recursive call. Therefore, a chain of stack frames have to be maintained.
-
-https://en.wikipedia.org/wiki/Tail_call
